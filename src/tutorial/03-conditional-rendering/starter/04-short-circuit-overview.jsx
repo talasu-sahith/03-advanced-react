@@ -1,6 +1,17 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const ShortCircuitOverview = () => {
-  return <h2>short circuit overview</h2>;
+  const [text, setText] = useState("");
+  const [name, setName] = useState("Sushanth");
+
+  return (
+    <div>
+      short circuit overview
+      <h2>Short OR: {text || "hello World"}</h2>
+      <h2>Short AND: {text && "hello World"}</h2>
+      <h2>Short OR: {name || "hello World"}</h2>
+      <h2>Short AND: {name && "hello World"}</h2>
+    </div>
+  );
 };
 export default ShortCircuitOverview;
