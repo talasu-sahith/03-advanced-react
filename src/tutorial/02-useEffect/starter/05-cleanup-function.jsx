@@ -15,14 +15,21 @@ const CleanupFunction = () => {
 };
 const RandomComponent = () => {
   useEffect(() => {
-    console.log("this is random component");
-    const intID = setInterval(() => {
-      console.log("Interval");
-    }, 1000);
-    return () => {
-      clearInterval(intID);
-      console.log("clean up");
+    // console.log("this is random component");
+    // const intID = setInterval(() => {
+    //   console.log("Interval");
+    // }, 1000);
+    // return () => {
+    //   clearInterval(intID);
+    //   console.log("clean up");
+    // };
+
+    const someFunc = () => {
+      //some logic
     };
+    window.addEventListener("scroll", someFunc);
+
+    return () => window.removeEventListener("scroll", someFunc);
   }, []);
 };
 
