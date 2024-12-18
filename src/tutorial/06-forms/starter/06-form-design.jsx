@@ -1,6 +1,7 @@
 import { useState } from "react";
 const frameworks = ["react", "angular", "vue", "express"];
 const FormDesign = () => {
+  const [name, setName] = useState("");
   const [shipping, setShipping] = useState(false);
   const [frameWork, setFrameWork] = useState("react");
   const handleShipping = (e) => {
@@ -16,7 +17,13 @@ const FormDesign = () => {
       <form className="form">
         <div>
           <label className="form-label">Name</label>
-          <input className="form-input" type="text" name="name"></input>
+          <input
+            className="form-input"
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></input>
         </div>
         <div className="form-row" style={{ textAlign: "left" }}>
           <label htmlFor="shipping">Shipping</label>
