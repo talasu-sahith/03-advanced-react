@@ -6,7 +6,7 @@ const FetchData = () => {
   // const [isError, setIsError] = useState(false);
   // const [user, setUser] = useState(null);
 
-  const { isLoading, isError, user } = useFetch(url);
+  const { isLoading, isError, data: user } = useFetch(url);
 
   // useEffect(() => {
   //   const fetchUser = async () => {
