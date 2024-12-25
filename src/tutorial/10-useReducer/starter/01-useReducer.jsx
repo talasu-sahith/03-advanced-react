@@ -1,19 +1,31 @@
 import React, { useReducer } from "react";
-import { data, people } from "../../../data";
+import { data } from "../../../data";
+import { CLEAR_LIST, RESET_LIST, REMOVE_LIST } from "./actions";
+import reducer from "./reducer";
 
 const defaultState = {
   people: data,
 };
 
-const reducer = (state, action) => {
-  if (action.type === "clearList") {
-    return { ...state, people: [] };
-  }
-  if (action.type === "resetList") {
-    return { ...state, people: data };
-  }
-  throw new Error(`No Matching "${action.type}" - action type`);
-};
+// const CLEAR_LIST = "clearList";
+// const RESET_LIST = "resetList";
+// const REMOVE_LIST = "remmoveItem";
+
+// const reducer = (state, action) => {
+//   if (action.type === CLEAR_LIST) {
+//     return { ...state, people: [] };
+//   }
+//   if (action.type === RESET_LIST) {
+//     return { ...state, people: data };
+//   }
+//   if (action.type === REMOVE_LIST) {
+//     let newPeople = state.people.filter((item) => item.id != action.payload.id);
+//     // console.log(action);
+//     return { ...state, people: newPeople };
+//     // return state;
+//   }
+//   throw new Error(`No Matching "${action.type}" - action type`);
+// };
 
 const ReducerBasics = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
@@ -23,12 +35,13 @@ const ReducerBasics = () => {
   const removeItem = (id) => {
     // let newPeople = people.filter((person) => person.id !== id);
     // setPeople(newPeople);
+    dispatch({ type: REMOVE_LIST, payload: { id } });
   };
   const clearItems = () => {
-    dispatch({ type: "clearList" });
+    dispatch({ type: CLEAR_LIST });
   };
   const reset = () => {
-    dispatch({ type: "resetsLists" });
+    dispatch({ type: RESET_LIST });
   };
   return (
     <div>
